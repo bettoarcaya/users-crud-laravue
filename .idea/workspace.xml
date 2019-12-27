@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c335afa7-e822-4c48-bd71-83c015cb321d" name="Default Changelist" comment="" />
+    <list default="true" id="c335afa7-e822-4c48-bd71-83c015cb321d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/prueba-laravel-vue.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/prueba-laravel-vue.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,18 +19,112 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.env">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Models/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="4" column="31" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
+            <state relative-caret-position="36">
+              <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/User.php">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+              <folding>
+                <element signature="e#45#81#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/ForgotPasswordController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+              <folding>
+                <element signature="e#45#81#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/ConfirmPasswordController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+              <folding>
+                <element signature="e#45#81#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Controller.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+              <folding>
+                <element signature="e#40#97#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="6" column="20" lean-forward="true" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/ResetPasswordController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+              <folding>
+                <element signature="e#45#81#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/VerificationController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-116">
+              <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+              <folding>
+                <element signature="e#45#81#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -35,7 +135,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/app/User.php" />
+        <option value="$PROJECT_DIR$/config/auth.php" />
         <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -148,12 +253,35 @@
               <item name="prueba-laravel-vue" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="prueba-laravel-vue" type="b2602c69:ProjectViewProjectNode" />
+              <item name="prueba-laravel-vue" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="prueba-laravel-vue" type="b2602c69:ProjectViewProjectNode" />
+              <item name="prueba-laravel-vue" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="prueba-laravel-vue" type="b2602c69:ProjectViewProjectNode" />
+              <item name="prueba-laravel-vue" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scope" />
     </panes>
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Models" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -183,12 +311,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1577452332840</updated>
-      <workItem from="1577452335500" duration="1756000" />
+      <workItem from="1577452335500" duration="3049000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1756000" />
+    <option name="totallyTimeSpent" value="3049000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1600" height="873" extended-state="6" />
@@ -223,13 +351,129 @@
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.env" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/User.php">
+    <entry file="file://$PROJECT_DIR$/config/auth.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1260">
+          <caret line="70" column="46" lean-forward="true" selection-start-line="70" selection-start-column="46" selection-end-line="70" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3590" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Providers/AppServiceProvider.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Providers/AuthServiceProvider.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/.env">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="4" lean-forward="true" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
+          <folding>
+            <element signature="e#7#52#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="20" lean-forward="true" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/VerificationController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-116">
+          <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+          <folding>
+            <element signature="e#45#81#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/ResetPasswordController.php">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
-          <caret line="4" column="31" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
+          <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+          <folding>
+            <element signature="e#45#81#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+          <folding>
+            <element signature="e#45#81#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/ForgotPasswordController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+          <folding>
+            <element signature="e#45#81#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/ConfirmPasswordController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+          <folding>
+            <element signature="e#45#81#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+          <folding>
+            <element signature="e#40#97#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
         </state>
       </provider>
     </entry>
