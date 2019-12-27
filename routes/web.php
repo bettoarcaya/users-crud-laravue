@@ -16,7 +16,8 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function(){
-  Route::get('/', 'HomeController@index')->name('home');
+  //Route::get('/', 'HomeController@index')->name('home');
+  Route::get('clients', 'ClientController@index');
 });
 
 Auth::routes();
