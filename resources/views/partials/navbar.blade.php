@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
   <div class="container">
-    <a class="navbar-brand" href="{{ url('/') }}">
+    <a class="navbar-brand vue-color" href="{{ url('/') }}">
       LaraVue
       {{-- config('app.name', 'Laravue') --}}
     </a>
@@ -18,10 +18,10 @@
       <ul class="navbar-nav ml-auto">
         <!-- Authentication Links -->
         @if( Auth::check() )
-          <li class="nav-item"><a class="nav-link" href="{{route('clients')}}"> Clientes </a></li>
-          <li class="nav-item"><a class="nav-link" href="{{route('reports')}}"> Reportes </a></li>
+          <li class="nav-item"><a class="nav-link vue-color" href="{{route('clients')}}"> Clientes </a></li>
+          <li class="nav-item"><a class="nav-link vue-color" href="{{route('reports')}}"> Reportes </a></li>
           <li class="nav-item dropdown">
-            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+            <a id="navbarDropdown" class="nav-link dropdown-toggle vue-color" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
               {{ Auth::user()->name }} <span class="caret"></span>
             </a>
 

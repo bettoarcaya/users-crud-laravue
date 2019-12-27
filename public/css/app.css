@@ -11356,3 +11356,17 @@ a.text-dark:focus {
   }
 }
 
+.vue-color {
+  color: #34495e !important;
+}
+
+.principal-bg {
+  background-color: white !important;
+}
+
+.vue-color-btn {
+  background-color: #42b983;
+  border-color: #42b983;
+  color: white;
+}
+

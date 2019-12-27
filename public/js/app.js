@@ -1886,11 +1886,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   beforeMount: function beforeMount() {
     var self = this;
     axios.get('/dashboard/clients/all').then(function (response) {
       self.clientList = response.data.clients;
+      console.log(self.clientList);
     })["catch"](function (error) {
       console.log(error.response);
     });
@@ -37316,9 +37342,39 @@ var render = function() {
           _c("div", { staticClass: "card-body" }, [
             _vm.clientList.length === 0
               ? _c("div", { staticClass: "text-center" }, [
-                  _c("h5", [_vm._v(" No se encontraron clientes ")])
+                  _c("h5", { staticClass: "vue-color" }, [
+                    _vm._v(" No se encontraron clientes ")
+                  ])
                 ])
-              : _c("div")
+              : _c("div", [
+                  _c(
+                    "table",
+                    { staticClass: "table table-hover table-striped" },
+                    [
+                      _vm._m(1),
+                      _vm._v(" "),
+                      _c(
+                        "tbody",
+                        _vm._l(_vm.clientList, function(client) {
+                          return _c("tr", { key: client.id }, [
+                            _c("td", [_vm._v(_vm._s(client.name))]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(client.lastname))]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(client.email))]),
+                            _vm._v(" "),
+                            _vm._m(2, true),
+                            _vm._v(" "),
+                            _vm._m(3, true),
+                            _vm._v(" "),
+                            _vm._m(4, true)
+                          ])
+                        }),
+                        0
+                      )
+                    ]
+                  )
+                ])
           ])
         ])
       ])
@@ -37330,16 +37386,77 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("h4", { staticClass: "float-left" }, [_vm._v("Clientes")]),
+    return _c("div", { staticClass: "card-header principal-bg" }, [
+      _c("h4", { staticClass: "float-left vue-color" }, [_vm._v("Clientes")]),
       _vm._v(" "),
       _c(
         "a",
         {
-          staticClass: "btn btn-primary float-right",
+          staticClass: "btn vue-color-btn float-right",
           attrs: { href: "javascript:void(0)" }
         },
         [_vm._v("Agregar")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", { staticClass: "vue-color" }, [
+        _c("th", [_vm._v("Nombre")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Apellido")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Email")]),
+        _vm._v(" "),
+        _c("th", { attrs: { colspan: "2" } })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { attrs: { width: "10px" } }, [
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-warning btn-sm",
+          attrs: { href: "javascript:void(0)" }
+        },
+        [_vm._v("V")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { attrs: { width: "10px" } }, [
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-danger btn-sm",
+          attrs: { href: "javascript:void(0)" }
+        },
+        [_vm._v("E")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { attrs: { width: "10px" } }, [
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-danger btn-sm",
+          attrs: { href: "javascript:void(0)" }
+        },
+        [_vm._v("E")]
       )
     ])
   }
