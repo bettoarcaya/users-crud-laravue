@@ -1923,6 +1923,92 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   beforeMount: function beforeMount() {
     var self = this;
@@ -1935,8 +2021,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      clientList: []
+      clientList: [],
+      carDealership: [],
+      carships: ''
     };
+  },
+  methods: {
+    carDealershipList: function carDealershipList() {
+      this.carDealership.push(this.carships);
+    }
   }
 });
 
@@ -37438,7 +37531,152 @@ var render = function() {
           ])
         ])
       ])
-    ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "add-client-modal",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "add-client-modal",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "modal-dialog modal-dialog-centered",
+            attrs: { role: "document" }
+          },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _c("div", { attrs: { id: "" } }, [
+                _c("form", { attrs: { method: "post" } }, [
+                  _c("div", { staticClass: "modal-header" }, [
+                    _c("h5", { staticClass: "modal-title vue-color" }, [
+                      _vm._v("Agregar cliente")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "close",
+                        attrs: {
+                          type: "button",
+                          "data-dismiss": "modal",
+                          "aria-label": "Close"
+                        }
+                      },
+                      [
+                        _c("span", { attrs: { "aria-hidden": "true" } }, [
+                          _c("img", {
+                            attrs: { src: "/assets/icons/dismiss.svg" }
+                          })
+                        ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-body" }, [
+                    _vm._m(2),
+                    _vm._v(" "),
+                    _vm._m(3),
+                    _vm._v(" "),
+                    _vm._m(4),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", { attrs: { for: "client_car_dealership" } }, [
+                        _vm._v("Concesionarios")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.carships,
+                              expression: "carships"
+                            }
+                          ],
+                          staticClass: "form-control custom-select",
+                          attrs: {
+                            id: "client_car_dealership",
+                            name: "carships[]"
+                          },
+                          on: {
+                            change: [
+                              function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.carships = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              },
+                              _vm.carDealershipList
+                            ]
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { value: "long" } }, [
+                            _vm._v("opcion1")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "longer" } }, [
+                            _vm._v("opcion2")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "longer longer" } }, [
+                            _vm._v("opcion2")
+                          ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "container" }, [
+                        _c(
+                          "div",
+                          { staticClass: "row" },
+                          _vm._l(_vm.carDealership, function(carship) {
+                            return _c(
+                              "div",
+                              {
+                                key: carship.id,
+                                staticClass:
+                                  "col-md-4 bg-color margin-t-5 margin-l-5"
+                              },
+                              [
+                                _vm._v(
+                                  "\n                      " +
+                                    _vm._s(carship) +
+                                    " "
+                                ),
+                                _vm._m(5, true)
+                              ]
+                            )
+                          }),
+                          0
+                        )
+                      ])
+                    ])
+                  ])
+                ])
+              ])
+            ])
+          ]
+        )
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -37453,9 +37691,13 @@ var staticRenderFns = [
         "a",
         {
           staticClass: "btn vue-color-btn float-right",
-          attrs: { href: "javascript:void(0)" }
+          attrs: {
+            href: "javascript:void(0)",
+            "data-toggle": "modal",
+            "data-target": "#add-client-modal"
+          }
         },
-        [_vm._v("Agregar")]
+        [_vm._v("\n            Agregar\n          ")]
       )
     ])
   },
@@ -37474,6 +37716,73 @@ var staticRenderFns = [
         _c("th", { attrs: { colspan: "2" } })
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "client_name" } }, [_vm._v("Nombre")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: {
+          type: "text",
+          id: "client_name",
+          placeholder: "Nombre",
+          name: "name",
+          required: ""
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "client_lastname" } }, [_vm._v("Apellido")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: {
+          type: "text",
+          id: "client_lastname",
+          placeholder: "Apellido",
+          name: "lastname",
+          required: ""
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "client_email" } }, [_vm._v("Email")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: {
+          type: "email",
+          id: "client_email",
+          placeholder: "Email",
+          name: "email",
+          required: ""
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "span",
+      { staticClass: "float-right", attrs: { "aria-hidden": "true" } },
+      [_c("a", { attrs: { href: "javascript:void(0)" } }, [_vm._v("×")])]
+    )
   }
 ]
 render._withStripped = true

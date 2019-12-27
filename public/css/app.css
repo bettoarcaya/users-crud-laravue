@@ -11374,3 +11374,15 @@ a.text-dark:focus {
   width: 20px;
 }
 
+.bg-color {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.margin-t-5 {
+  margin-top: 5px;
+}
+
+.margin-l-5 {
+  margin-left: 5px;
+}
+
