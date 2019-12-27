@@ -17,7 +17,11 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function(){
   //Route::get('/', 'HomeController@index')->name('home');
-  Route::get('clients', 'ClientController@index');
+  Route::get('clients', 'ClientController@index')->name('clients');
+
+  Route::get('reports', function() {
+    return view('reports');
+  })->name('reports');
 });
 
 Auth::routes();
