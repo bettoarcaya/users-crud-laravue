@@ -2,19 +2,39 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\ClientRepository;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
-    /**
+    protected $clientRepository;
+
+    public function __construct(
+       ClientRepository $client_repository
+    ){
+      $this->clientRepository = $client_repository;
+    }
+
+  /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        
-        return view('clients');
+
+      return view('clients');
+    }
+
+    /**
+     * return all the available clients
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getClients(){
+      $clients = $this->clientRepository->getAll();
+      $data    = compact('clients');
+
+      return response()->json($data, 200);
     }
 
     /**

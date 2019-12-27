@@ -19,6 +19,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function(){
   //Route::get('/', 'HomeController@index')->name('home');
   Route::get('clients', 'ClientController@index')->name('clients');
 
+  Route::get('clients/all', 'ClientController@getClients');
+
   Route::get('reports', function() {
     return view('reports');
   })->name('reports');

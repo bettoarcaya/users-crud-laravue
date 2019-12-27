@@ -1885,7 +1885,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  beforeMount: function beforeMount() {
+    var self = this;
+    axios.get('/dashboard/clients/all').then(function (response) {
+      self.clientList = response.data.clients;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+  },
   data: function data() {
     return {
       clientList: []
@@ -37322,7 +37331,16 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header" }, [
-      _c("h4", [_vm._v("Clientes")])
+      _c("h4", { staticClass: "float-left" }, [_vm._v("Clientes")]),
+      _vm._v(" "),
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-primary float-right",
+          attrs: { href: "javascript:void(0)" }
+        },
+        [_vm._v("Agregar")]
+      )
     ])
   }
 ]
