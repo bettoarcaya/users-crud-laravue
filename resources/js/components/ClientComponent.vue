@@ -29,13 +29,25 @@
                     <td>{{client.lastname}}</td>
                     <td>{{client.email}}</td>
                     <td width="10px">
-                      <a href="javascript:void(0)" class="btn btn-warning btn-sm">V</a>
+                      <a href="javascript:void(0)" class="btn btn-sm">
+                        <img
+                          class="w-20-px"
+                          :src="'/assets/icons/eye-solid.svg'">
+                      </a>
                     </td>
                     <td width="10px">
-                      <a href="javascript:void(0)" class="btn btn-danger btn-sm">E</a>
+                      <a href="javascript:void(0)" class="btn btn-sm">
+                        <img
+                          class="w-20-px"
+                          :src="'/assets/icons/edit-solid.svg'">
+                      </a>
                     </td>
                     <td width="10px">
-                      <a href="javascript:void(0)" class="btn btn-danger btn-sm">E</a>
+                      <a href="javascript:void(0)" class="btn btn-sm">
+                        <img
+                          class="w-20-px"
+                          :src="'/assets/icons/trash-alt-solid.svg'">
+                      </a>
                     </td>
                   </tr>
                 </tbody>
