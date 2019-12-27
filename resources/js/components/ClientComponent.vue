@@ -4,13 +4,15 @@
     <div class="row justify-content-center">
       <div class="col-md-12">
         <div class="card">
-          <div class="card-header">Clientes</div>
+          <div class="card-header">
+            <h4>Clientes</h4>
+          </div>
           <div class="card-body">
             <div class="text-center" v-if="clientList.length === 0">
-              <h3> No se encontraron clientes </h3>
+              <h5> No se encontraron clientes </h5>
             </div>
             <div v-else>
-              
+
 
             </div>
           </div>
