@@ -47,7 +47,11 @@
                       </a>
                     </td>
                     <td width="10px">
-                      <a href="javascript:void(0)" class="btn btn-sm">
+                      <a
+                        href="javascript:void(0)"
+                        class="btn btn-sm"
+                        data-toggle="modal"
+                        data-target="#edit-client-modal">
                         <img
                           class="w-20-px"
                           :src="'/assets/icons/edit-solid.svg'">
@@ -90,6 +94,10 @@
       v-on:delete="deleteClient($event)"
     ></delete-client-modal-component>
 
+    <update-client-modal-component
+      v-on:edit="editClient($event)"
+    ></update-client-modal-component>
+
 
   </div>
 
@@ -99,8 +107,11 @@
   import AddClientModalComponent from "./Modals/AddClientModalComponent";
   import WatchClientModalComponent from "./Modals/WatchClientModalComponent";
   import DeleteClientModalComponent from "./Modals/DeleteClientModalComponent";
+  import UpdateClientModalComponent from "./Modals/UpdateClientModalComponent";
   export default {
-      components: {DeleteClientModalComponent, WatchClientModalComponent, AddClientModalComponent},
+      components: {
+          UpdateClientModalComponent,
+          DeleteClientModalComponent, WatchClientModalComponent, AddClientModalComponent},
       beforeMount(){
       let self = this;
       axios.get('/clients/')
@@ -155,6 +166,9 @@
              .catch(error => {
                console.log(error.response);
              });
+      },
+      editClient: function(event){
+        alert('editing');
       }
     }
   }
