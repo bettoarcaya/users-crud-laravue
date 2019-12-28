@@ -12,6 +12,7 @@ namespace App\Repositories;
 
 use App\Models\Client;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class ClientRepository
 {
@@ -42,6 +43,22 @@ class ClientRepository
       $dealer->save();
     }
 
+  }
+
+  public function getClient($user_id){
+    $response = User::findOrFail($user_id);
+
+    return $response;
+  }
+
+  public function getCarDealerships($user_id){
+
+    $response = DB::table('clients')
+                ->where('user_id', $user_id)
+                ->join('car_dealerships', 'car_dealerships.id', '=', 'clients.car_dealer_id')
+                ->get();
+
+    return $response;
   }
 
 }

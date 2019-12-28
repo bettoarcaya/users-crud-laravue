@@ -97,7 +97,6 @@
       data(){
         return{
           carDealerships: [],
-          carDealership: [],
           carships: {},
           data: {
             name: '',

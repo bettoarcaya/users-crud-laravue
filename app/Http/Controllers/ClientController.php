@@ -82,9 +82,19 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
+    public function show($id){
+
+      $client = $this->clientRepository->getClient($id);
+      $data = compact('client');
+
+      return response()->json($data, 200);
+    }
+
+    public function getCarShips($id){
+      $ships = $this->clientRepository->getCarDealerships($id);
+      $data = compact('ships');
+
+      return response()->json($data, 200);
     }
 
     /**

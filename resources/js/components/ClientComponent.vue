@@ -35,7 +35,12 @@
                     <td>{{client.lastname}}</td>
                     <td>{{client.email}}</td>
                     <td width="10px">
-                      <a href="javascript:void(0)" class="btn btn-sm">
+                      <a
+                        href="javascript:void(0)"
+                        class="btn btn-sm"
+                        data-toggle="modal"
+                        data-target="#watch-client-modal"
+                        v-on:click="openModal(client)">
                         <img
                           class="w-20-px"
                           :src="'/assets/icons/eye-solid.svg'">
@@ -68,14 +73,24 @@
       v-on:submit="submitClient($event)"
     ></add-client-modal-component>
 
+    <watch-client-modal-component
+      :data="{
+        client: clientObject,
+        carShips: clientCarships
+       }"
+    ></watch-client-modal-component>
+
+
+
   </div>
 
 </template>
 
 <script>
   import AddClientModalComponent from "./Modals/AddClientModalComponent";
+  import WatchClientModalComponent from "./Modals/WatchClientModalComponent";
   export default {
-      components: {AddClientModalComponent},
+      components: {WatchClientModalComponent, AddClientModalComponent},
       beforeMount(){
       let self = this;
       axios.get('/clients/')
@@ -89,6 +104,9 @@
     data() {
       return {
         clientList: [],
+        clientObject: {},
+        clientCarships: []
+
       }
     },
     methods:{
@@ -100,6 +118,17 @@
             .catch( error => {
               console.log(error.response);
             });
+      },
+      openModal: function(client){
+        this.clientObject = client;
+        let self = this;
+        axios.get('/clients/car-dealerships/' + client.id)
+             .then(response => {
+                 self.clientCarships = response.data.ships;
+             })
+            .catch(error => {
+                console.log(error.response);
+            })
       }
     }
   }

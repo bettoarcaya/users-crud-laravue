@@ -11360,6 +11360,10 @@ a.text-dark:focus {
   color: #34495e !important;
 }
 
+.vue-bg-color {
+  background-color: #42b983;
+}
+
 .principal-bg {
   background-color: white !important;
 }
@@ -11370,6 +11374,10 @@ a.text-dark:focus {
   color: white;
 }
 
+.vue-font {
+  color: #42b983;
+}
+
 .w-20-px {
   width: 20px;
 }
@@ -11378,11 +11386,24 @@ a.text-dark:focus {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
+.no-padd {
+  padding: 0px !important;
+}
+
+.padd-10 {
+  padding: 10px;
+}
+
 .margin-t-5 {
   margin-top: 5px;
 }
 
 .margin-l-5 {
   margin-left: 5px;
+}
+
+.round-img {
+  border-radius: 50%;
+  width: 30%;
 }
 

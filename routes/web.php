@@ -27,6 +27,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function(){
 Route::group(['prefix' => 'clients', 'middleware' => 'auth'], function(){
   Route::get('/', 'ClientController@getClients');
   Route::post('/', 'ClientController@store');
+  Route::get('/{id}','ClientController@show');
+  Route::get('/car-dealerships/{id}','ClientController@getCarShips');
 });
 
 Route::group(['prefix' => 'car-dealerships', 'middleware' => 'auth'],function(){
