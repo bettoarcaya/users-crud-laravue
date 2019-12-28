@@ -1944,7 +1944,6 @@ __webpack_require__.r(__webpack_exports__);
     var self = this;
     axios.get('/clients/').then(function (response) {
       self.clientList = response.data.clients;
-      console.log(self.clientList);
     })["catch"](function (error) {
       console.log(error.response);
     });
@@ -1956,8 +1955,10 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     submitClient: function submitClient(data) {
+      var _this = this;
+
       axios.post('/clients/', data).then(function (response) {
-        console.log(response);
+        _this.clientList.push(response.data.client);
       })["catch"](function (error) {
         console.log(error.response);
       });
@@ -2091,10 +2092,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  beforeMount: function beforeMount() {
+    var _this = this;
+
+    axios.get('/car-dealerships/').then(function (response) {
+      _this.carDealerships = response.data.car_dealerships;
+    })["catch"](function (error) {
+      console.log(error.response);
+    });
+  },
   data: function data() {
     return {
-      carships: '',
+      carDealerships: [],
+      carDealership: [],
+      carships: {},
       data: {
         name: '',
         lastname: '',
@@ -2106,6 +2121,13 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     carDealershipList: function carDealershipList() {
       this.data.carDealership.push(this.carships);
+    },
+    dellCarShip: function dellCarShip(carShipId) {
+      for (var i = 0; i < this.data.carDealership.length; i++) {
+        if (this.data.carDealership[i].id === carShipId) {
+          this.data.carDealership.splice(i, 1);
+        }
+      }
     }
   }
 });
@@ -37900,19 +37922,25 @@ var render = function() {
                             ]
                           }
                         },
-                        [
-                          _c("option", { attrs: { value: "long" } }, [
-                            _vm._v("opcion1")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "longer" } }, [
-                            _vm._v("opcion2")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "longer longer" } }, [
-                            _vm._v("opcion2")
-                          ])
-                        ]
+                        _vm._l(_vm.carDealerships, function(carship) {
+                          return _c(
+                            "option",
+                            {
+                              key: carship.id,
+                              domProps: {
+                                value: { id: carship.id, name: carship.name }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                  " +
+                                  _vm._s(carship.name) +
+                                  "\n                "
+                              )
+                            ]
+                          )
+                        }),
+                        0
                       ),
                       _vm._v(" "),
                       _c("div", { staticClass: "container" }, [
@@ -37930,10 +37958,30 @@ var render = function() {
                               [
                                 _vm._v(
                                   "\n                    " +
-                                    _vm._s(carship) +
+                                    _vm._s(carship.name) +
                                     " "
                                 ),
-                                _vm._m(0, true)
+                                _c(
+                                  "span",
+                                  {
+                                    staticClass: "float-right",
+                                    attrs: { "aria-hidden": "true" }
+                                  },
+                                  [
+                                    _c(
+                                      "a",
+                                      {
+                                        attrs: { href: "javascript:void(0)" },
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.dellCarShip(carship.id)
+                                          }
+                                        }
+                                      },
+                                      [_vm._v("×")]
+                                    )
+                                  ]
+                                )
                               ]
                             )
                           }),
@@ -37943,7 +37991,7 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _vm._m(1)
+                  _vm._m(0)
                 ]
               )
             ])
@@ -37954,16 +38002,6 @@ var render = function() {
   )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "span",
-      { staticClass: "float-right", attrs: { "aria-hidden": "true" } },
-      [_c("a", { attrs: { href: "javascript:void(0)" } }, [_vm._v("×")])]
-    )
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

@@ -10,6 +10,7 @@ namespace App\Repositories;
 
 
 
+use App\Models\Client;
 use App\Models\User;
 
 class ClientRepository
@@ -30,6 +31,17 @@ class ClientRepository
     $response = User::create($client);
 
     return $response;
+  }
+
+  public function saveClientCarships($dealer_ships, $client_id){
+
+    foreach ($dealer_ships as $dealer_ship){
+      $dealer = new Client();
+      $dealer->user_id = $client_id;
+      $dealer->car_dealer_id = $dealer_ship['id'];
+      $dealer->save();
+    }
+
   }
 
 }

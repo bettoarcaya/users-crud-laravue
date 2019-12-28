@@ -81,7 +81,6 @@
       axios.get('/clients/')
           .then( response => {
               self.clientList = response.data.clients;
-              console.log(self.clientList);
           })
           .catch( error => {
              console.log(error.response);
@@ -96,7 +95,7 @@
       submitClient: function(data){
         axios.post('/clients/', data)
             .then( response => {
-              console.log(response);
+              this.clientList.push(response.data.client);
             })
             .catch( error => {
               console.log(error.response);

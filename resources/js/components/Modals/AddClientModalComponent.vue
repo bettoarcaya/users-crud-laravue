@@ -54,14 +54,17 @@
               <div class="form-group">
                 <label for="client_car_dealership">Concesionarios</label>
                 <select id="client_car_dealership" @change="carDealershipList" class="form-control custom-select" v-model="carships" name="carships[]">
-                  <option value="long">opcion1</option>
-                  <option value="longer">opcion2</option>
-                  <option value="longer longer">opcion2</option>
+                  <option
+                    v-for="carship in carDealerships"
+                    :key="carship.id"
+                    :value="{id: carship.id, name: carship.name}">
+                    {{carship.name}}
+                  </option>
                 </select>
                 <div class="container">
                   <div class="row">
                     <div class="col-md-4 bg-color margin-t-5 margin-l-5" v-for="carship in data.carDealership" :key="carship.id">
-                      {{carship}} <span class="float-right" aria-hidden="true"><a href="javascript:void(0)">&times;</a></span>
+                      {{carship.name}} <span class="float-right" aria-hidden="true"><a href="javascript:void(0)" v-on:click="dellCarShip(carship.id)">&times;</a></span>
                     </div>
                   </div>
                 </div>
@@ -82,9 +85,20 @@
 
 <script>
     export default {
+      beforeMount(){
+        axios.get('/car-dealerships/')
+             .then(response => {
+                 this.carDealerships = response.data.car_dealerships;
+             })
+             .catch(error => {
+                 console.log(error.response)
+             });
+      },
       data(){
         return{
-          carships: '',
+          carDealerships: [],
+          carDealership: [],
+          carships: {},
           data: {
             name: '',
             lastname: '',
@@ -96,6 +110,13 @@
       methods: {
         carDealershipList: function(){
             this.data.carDealership.push(this.carships);
+        },
+        dellCarShip: function(carShipId){
+          for(let i = 0; i < this.data.carDealership.length; i++){
+            if(this.data.carDealership[i].id === carShipId){
+              this.data.carDealership.splice(i, 1);
+            }
+          }
         }
       }
     }

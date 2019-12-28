@@ -29,4 +29,8 @@ Route::group(['prefix' => 'clients', 'middleware' => 'auth'], function(){
   Route::post('/', 'ClientController@store');
 });
 
+Route::group(['prefix' => 'car-dealerships', 'middleware' => 'auth'],function(){
+  Route::get('/', 'HomeController@getCarShips');
+});
+
 Auth::routes();

@@ -69,6 +69,7 @@ class ClientController extends Controller
 
       $dealership_data = $request->carDealership;
       $client          = $this->clientRepository->saveClient($client_data);
+      $this->clientRepository->saveClientCarships($dealership_data, $client->id);
       $data            = compact('client');
 
 
