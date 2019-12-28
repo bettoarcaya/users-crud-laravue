@@ -51,7 +51,8 @@
                         href="javascript:void(0)"
                         class="btn btn-sm"
                         data-toggle="modal"
-                        data-target="#edit-client-modal">
+                        data-target="#edit-client-modal"
+                        v-on:click="openEditModal(client)">
                         <img
                           class="w-20-px"
                           :src="'/assets/icons/edit-solid.svg'">
@@ -95,6 +96,7 @@
     ></delete-client-modal-component>
 
     <update-client-modal-component
+      :data="{client: clientObject}"
       v-on:edit="editClient($event)"
     ></update-client-modal-component>
 
@@ -153,6 +155,9 @@
                 console.log(error.response);
             })
       },
+      openEditModal: function(client){
+        this.clientObject = client;
+      },
       openDeleteModal: function(clientname, clientid){
           this.clientName = clientname;
           this.clientId = clientid;
@@ -168,7 +173,15 @@
              });
       },
       editClient: function(event){
-        alert('editing');
+        let self = this;
+        console.log(event);
+        axios.put('/clients/' + event.id, event)
+             .then(response => {
+              console.log(response);
+             })
+            .catch(error => {
+              console.log(error.response);
+            })
       }
     }
   }

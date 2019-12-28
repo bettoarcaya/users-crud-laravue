@@ -1969,6 +1969,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -2016,6 +2018,9 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error.response);
       });
     },
+    openEditModal: function openEditModal(client) {
+      this.clientObject = client;
+    },
     openDeleteModal: function openDeleteModal(clientname, clientid) {
       this.clientName = clientname;
       this.clientId = clientid;
@@ -2029,7 +2034,13 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     editClient: function editClient(event) {
-      alert('editing');
+      var self = this;
+      console.log(event);
+      axios.put('/clients/' + event.id, event).then(function (response) {
+        console.log(response);
+      })["catch"](function (error) {
+        console.log(error.response);
+      });
     }
   }
 });
@@ -2343,11 +2354,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "UpdateClientModalComponent",
+  props: ['data'],
   beforeMount: function beforeMount() {
-    var _this = this;
-
+    var self = this;
     axios.get('/car-dealerships/').then(function (response) {
-      _this.carDealerships = response.data.car_dealerships;
+      self.carDealerships = response.data.car_dealerships;
     })["catch"](function (error) {
       console.log(error.response);
     });
@@ -37879,6 +37890,11 @@ var render = function() {
                                       href: "javascript:void(0)",
                                       "data-toggle": "modal",
                                       "data-target": "#edit-client-modal"
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.openEditModal(client)
+                                      }
                                     }
                                   },
                                   [
@@ -37960,6 +37976,7 @@ var render = function() {
       }),
       _vm._v(" "),
       _c("update-client-modal-component", {
+        attrs: { data: { client: _vm.clientObject } },
         on: {
           edit: function($event) {
             return _vm.editClient($event)
@@ -38546,7 +38563,7 @@ var render = function() {
                   on: {
                     submit: function($event) {
                       $event.preventDefault()
-                      return _vm.$emit("edit", _vm.data)
+                      return _vm.$emit("edit", _vm.data.client)
                     }
                   }
                 },
@@ -38587,8 +38604,8 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.data.name,
-                            expression: "data.name"
+                            value: _vm.data.client.name,
+                            expression: "data.client.name"
                           }
                         ],
                         staticClass: "form-control",
@@ -38599,13 +38616,17 @@ var render = function() {
                           name: "name",
                           required: ""
                         },
-                        domProps: { value: _vm.data.name },
+                        domProps: { value: _vm.data.client.name },
                         on: {
                           input: function($event) {
                             if ($event.target.composing) {
                               return
                             }
-                            _vm.$set(_vm.data, "name", $event.target.value)
+                            _vm.$set(
+                              _vm.data.client,
+                              "name",
+                              $event.target.value
+                            )
                           }
                         }
                       })
@@ -38621,8 +38642,8 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.data.lastname,
-                            expression: "data.lastname"
+                            value: _vm.data.client.lastname,
+                            expression: "data.client.lastname"
                           }
                         ],
                         staticClass: "form-control",
@@ -38633,13 +38654,17 @@ var render = function() {
                           name: "lastname",
                           required: ""
                         },
-                        domProps: { value: _vm.data.lastname },
+                        domProps: { value: _vm.data.client.lastname },
                         on: {
                           input: function($event) {
                             if ($event.target.composing) {
                               return
                             }
-                            _vm.$set(_vm.data, "lastname", $event.target.value)
+                            _vm.$set(
+                              _vm.data.client,
+                              "lastname",
+                              $event.target.value
+                            )
                           }
                         }
                       })
@@ -38655,8 +38680,8 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.data.email,
-                            expression: "data.email"
+                            value: _vm.data.client.email,
+                            expression: "data.client.email"
                           }
                         ],
                         staticClass: "form-control",
@@ -38667,13 +38692,17 @@ var render = function() {
                           name: "email",
                           required: ""
                         },
-                        domProps: { value: _vm.data.email },
+                        domProps: { value: _vm.data.client.email },
                         on: {
                           input: function($event) {
                             if ($event.target.composing) {
                               return
                             }
-                            _vm.$set(_vm.data, "email", $event.target.value)
+                            _vm.$set(
+                              _vm.data.client,
+                              "email",
+                              $event.target.value
+                            )
                           }
                         }
                       })

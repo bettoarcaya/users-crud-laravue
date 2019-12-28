@@ -9,7 +9,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div id="">
-          <form method="post" @submit.prevent="$emit('edit', data)">
+          <form method="post" @submit.prevent="$emit('edit', data.client)">
             <div class="modal-header">
               <h5 class="modal-title vue-color">Editar cliente</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -25,7 +25,7 @@
                   class="form-control"
                   placeholder="Nombre"
                   name="name"
-                  v-model="data.name"
+                  v-model="data.client.name"
                   required>
               </div>
               <div class="form-group">
@@ -36,7 +36,7 @@
                   class="form-control"
                   placeholder="Apellido"
                   name="lastname"
-                  v-model="data.lastname"
+                  v-model="data.client.lastname"
                   required>
               </div>
               <div class="form-group">
@@ -47,7 +47,7 @@
                   class="form-control"
                   placeholder="Email"
                   name="email"
-                  v-model="data.email"
+                  v-model="data.client.email"
                   required>
               </div>
               <div class="form-group">
@@ -83,10 +83,12 @@
 <script>
     export default {
       name: "UpdateClientModalComponent",
+      props: ['data'],
       beforeMount(){
+        let self = this;
         axios.get('/car-dealerships/')
             .then(response => {
-                this.carDealerships = response.data.car_dealerships;
+                self.carDealerships = response.data.car_dealerships;
             })
             .catch(error => {
                 console.log(error.response)

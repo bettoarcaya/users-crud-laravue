@@ -30,6 +30,7 @@ Route::group(['prefix' => 'clients', 'middleware' => 'auth'], function(){
   Route::get('/{id}','ClientController@show');
   Route::get('/car-dealerships/{id}','ClientController@getCarShips');
   Route::delete('/{id}', 'ClientController@destroy');
+  Route::put('/{id}', 'ClientController@update');
 });
 
 Route::group(['prefix' => 'car-dealerships', 'middleware' => 'auth'],function(){

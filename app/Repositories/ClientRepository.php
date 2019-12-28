@@ -67,4 +67,11 @@ class ClientRepository
     return $response;
   }
 
+  public function updateClient($client, $user_id){
+
+    $response = User::findOrFail($user_id)->update($client);
+
+    return $response;
+  }
+
 }

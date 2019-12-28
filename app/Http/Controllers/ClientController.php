@@ -115,9 +115,18 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreClient $request, $id)
     {
-        //
+      $request->validated();
+      $client_data   = [
+        'name'     => $request->name,
+        'email'    => $request->email,
+        'lastname' => $request->lastname,
+      ];
+      $updated_client = $this->clientRepository->updateClient($client_data, $id);
+      $data = compact('updated_client');
+
+      return response()->json($data, 200);
     }
 
     /**
