@@ -110,7 +110,7 @@
       },
       methods: {
         carDealershipList: function(){
-            
+
             if( !this.checkList( this.carships.id ) ){
               this.newCarDealerships.push(this.carships.id);
               this.data.carDealerships.push(this.carships);
