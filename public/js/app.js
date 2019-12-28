@@ -2238,7 +2238,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     carDealershipList: function carDealershipList() {
-      this.value.val.carDealership.push(this.carships);
+      if (!this.checkList(this.carships)) {
+        this.value.val.carDealership.push(this.carships);
+      }
     },
     dellCarShip: function dellCarShip(carShipId) {
       for (var i = 0; i < this.value.val.carDealership.length; i++) {
@@ -2246,6 +2248,17 @@ __webpack_require__.r(__webpack_exports__);
           this.value.val.carDealership.splice(i, 1);
         }
       }
+    },
+    checkList: function checkList(value) {
+      var flag = false;
+
+      for (var i = 0; i < this.value.val.carDealership.length; i++) {
+        if (this.value.val.carDealership[i].id === value.id) {
+          flag = true;
+        }
+      }
+
+      return flag;
     }
   }
 });
@@ -2419,8 +2432,10 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     carDealershipList: function carDealershipList() {
-      this.newCarDealerships.push(this.carships.id);
-      this.data.carDealerships.push(this.carships);
+      if (!this.checkList(this.carships.id)) {
+        this.newCarDealerships.push(this.carships.id);
+        this.data.carDealerships.push(this.carships);
+      }
     },
     dellCarShip: function dellCarShip(carShipId) {
       for (var i = 0; i < this.data.carDealerships.length; i++) {
@@ -2429,6 +2444,17 @@ __webpack_require__.r(__webpack_exports__);
           this.data.carDealerships.splice(i, 1);
         }
       }
+    },
+    checkList: function checkList(value) {
+      var flag = false;
+
+      for (var i = 0; i < this.data.carDealerships.length; i++) {
+        if (this.data.carDealerships[i].id === value) {
+          flag = true;
+        }
+      }
+
+      return flag;
     }
   }
 });

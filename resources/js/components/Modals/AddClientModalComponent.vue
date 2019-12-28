@@ -106,7 +106,10 @@
       },
       methods: {
         carDealershipList: function(){
-            this.value.val.carDealership.push(this.carships);
+
+            if( !this.checkList( this.carships ) ){
+              this.value.val.carDealership.push(this.carships);
+            }
         },
         dellCarShip: function(carShipId){
           for(let i = 0; i < this.value.val.carDealership.length; i++){
@@ -114,6 +117,15 @@
               this.value.val.carDealership.splice(i, 1);
             }
           }
+        },
+        checkList: function(value){
+          let flag = false;
+          for(let i = 0; i < this.value.val.carDealership.length; i++){
+              if( this.value.val.carDealership[i].id === value.id ){
+                  flag = true;
+              }
+          }
+          return flag;
         }
       }
     }
