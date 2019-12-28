@@ -80,6 +80,7 @@
     </div>
 
     <add-client-modal-component
+      :value="{val: values}"
       v-on:submit="submitClient($event)"
     ></add-client-modal-component>
 
@@ -135,6 +136,12 @@
         clientCarships: [],
         clientName: '',
         clientid: null,
+        values: {
+            name: '',
+            lastname: '',
+            email: '',
+            carDealership: []
+        }
 
       }
     },
@@ -145,6 +152,12 @@
             .then( response => {
                 this.clientList.push(response.data.client);
                 self.message('success', 'Usuario guardado satisfactoriamente');
+                self.values = {
+                    name: '',
+                    lastname: '',
+                    email: '',
+                    carDealership: []
+                };
             })
             .catch( error => {
                 self.message('error', 'Ups, Porfavor intente nuevamente');

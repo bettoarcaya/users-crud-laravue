@@ -10,7 +10,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div id="">
-          <form method="post" @submit.prevent="$emit('submit', data)">
+          <form method="post" @submit.prevent="$emit('submit', value.val)">
             <div class="modal-header">
               <h5 class="modal-title vue-color">Agregar cliente</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -26,7 +26,7 @@
                   class="form-control"
                   placeholder="Nombre"
                   name="name"
-                  v-model="data.name"
+                  v-model="value.val.name"
                   required>
               </div>
               <div class="form-group">
@@ -37,7 +37,7 @@
                   class="form-control"
                   placeholder="Apellido"
                   name="lastname"
-                  v-model="data.lastname"
+                  v-model="value.val.lastname"
                   required>
               </div>
               <div class="form-group">
@@ -48,7 +48,7 @@
                   class="form-control"
                   placeholder="Email"
                   name="email"
-                  v-model="data.email"
+                  v-model="value.val.email"
                   required>
               </div>
               <div class="form-group">
@@ -63,7 +63,7 @@
                 </select>
                 <div class="container">
                   <div class="row">
-                    <div class="col-md-4 bg-color margin-t-5 margin-l-5" v-for="carship in data.carDealership" :key="carship.id">
+                    <div class="col-md-4 bg-color margin-t-5 margin-l-5" v-for="carship in value.val.carDealership" :key="carship.id">
                       {{carship.name}} <span class="float-right" aria-hidden="true"><a href="javascript:void(0)" v-on:click="dellCarShip(carship.id)">&times;</a></span>
                     </div>
                   </div>
@@ -85,6 +85,7 @@
 
 <script>
     export default {
+      props: ['value'],
       beforeMount(){
         axios.get('/car-dealerships/')
              .then(response => {
@@ -108,12 +109,12 @@
       },
       methods: {
         carDealershipList: function(){
-            this.data.carDealership.push(this.carships);
+            this.value.val.carDealership.push(this.carships);
         },
         dellCarShip: function(carShipId){
-          for(let i = 0; i < this.data.carDealership.length; i++){
-            if(this.data.carDealership[i].id === carShipId){
-              this.data.carDealership.splice(i, 1);
+          for(let i = 0; i < this.value.val.carDealership.length; i++){
+            if(this.value.val.carDealership[i].id === carShipId){
+              this.value.val.carDealership.splice(i, 1);
             }
           }
         }

@@ -1971,6 +1971,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -1997,7 +1998,13 @@ __webpack_require__.r(__webpack_exports__);
       dealershipObject: {},
       clientCarships: [],
       clientName: '',
-      clientid: null
+      clientid: null,
+      values: {
+        name: '',
+        lastname: '',
+        email: '',
+        carDealership: []
+      }
     };
   },
   methods: {
@@ -2009,6 +2016,12 @@ __webpack_require__.r(__webpack_exports__);
         _this.clientList.push(response.data.client);
 
         self.message('success', 'Usuario guardado satisfactoriamente');
+        self.values = {
+          name: '',
+          lastname: '',
+          email: '',
+          carDealership: []
+        };
       })["catch"](function (error) {
         self.message('error', 'Ups, Porfavor intente nuevamente');
       });
@@ -2204,6 +2217,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['value'],
   beforeMount: function beforeMount() {
     var _this = this;
 
@@ -2227,12 +2241,12 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     carDealershipList: function carDealershipList() {
-      this.data.carDealership.push(this.carships);
+      this.value.val.carDealership.push(this.carships);
     },
     dellCarShip: function dellCarShip(carShipId) {
-      for (var i = 0; i < this.data.carDealership.length; i++) {
-        if (this.data.carDealership[i].id === carShipId) {
-          this.data.carDealership.splice(i, 1);
+      for (var i = 0; i < this.value.val.carDealership.length; i++) {
+        if (this.value.val.carDealership[i].id === carShipId) {
+          this.value.val.carDealership.splice(i, 1);
         }
       }
     }
@@ -41000,6 +41014,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("add-client-modal-component", {
+        attrs: { value: { val: _vm.values } },
         on: {
           submit: function($event) {
             return _vm.submitClient($event)
@@ -41178,7 +41193,7 @@ var render = function() {
                   on: {
                     submit: function($event) {
                       $event.preventDefault()
-                      return _vm.$emit("submit", _vm.data)
+                      return _vm.$emit("submit", _vm.value.val)
                     }
                   }
                 },
@@ -41219,8 +41234,8 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.data.name,
-                            expression: "data.name"
+                            value: _vm.value.val.name,
+                            expression: "value.val.name"
                           }
                         ],
                         staticClass: "form-control",
@@ -41231,13 +41246,13 @@ var render = function() {
                           name: "name",
                           required: ""
                         },
-                        domProps: { value: _vm.data.name },
+                        domProps: { value: _vm.value.val.name },
                         on: {
                           input: function($event) {
                             if ($event.target.composing) {
                               return
                             }
-                            _vm.$set(_vm.data, "name", $event.target.value)
+                            _vm.$set(_vm.value.val, "name", $event.target.value)
                           }
                         }
                       })
@@ -41253,8 +41268,8 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.data.lastname,
-                            expression: "data.lastname"
+                            value: _vm.value.val.lastname,
+                            expression: "value.val.lastname"
                           }
                         ],
                         staticClass: "form-control",
@@ -41265,13 +41280,17 @@ var render = function() {
                           name: "lastname",
                           required: ""
                         },
-                        domProps: { value: _vm.data.lastname },
+                        domProps: { value: _vm.value.val.lastname },
                         on: {
                           input: function($event) {
                             if ($event.target.composing) {
                               return
                             }
-                            _vm.$set(_vm.data, "lastname", $event.target.value)
+                            _vm.$set(
+                              _vm.value.val,
+                              "lastname",
+                              $event.target.value
+                            )
                           }
                         }
                       })
@@ -41287,8 +41306,8 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.data.email,
-                            expression: "data.email"
+                            value: _vm.value.val.email,
+                            expression: "value.val.email"
                           }
                         ],
                         staticClass: "form-control",
@@ -41299,13 +41318,17 @@ var render = function() {
                           name: "email",
                           required: ""
                         },
-                        domProps: { value: _vm.data.email },
+                        domProps: { value: _vm.value.val.email },
                         on: {
                           input: function($event) {
                             if ($event.target.composing) {
                               return
                             }
-                            _vm.$set(_vm.data, "email", $event.target.value)
+                            _vm.$set(
+                              _vm.value.val,
+                              "email",
+                              $event.target.value
+                            )
                           }
                         }
                       })
@@ -41376,7 +41399,9 @@ var render = function() {
                         _c(
                           "div",
                           { staticClass: "row" },
-                          _vm._l(_vm.data.carDealership, function(carship) {
+                          _vm._l(_vm.value.val.carDealership, function(
+                            carship
+                          ) {
                             return _c(
                               "div",
                               {
