@@ -61,4 +61,10 @@ class ClientRepository
     return $response;
   }
 
+  public function deleteClient($user_id){
+    $response = User::findOrfail($user_id)->delete();
+
+    return $response;
+  }
+
 }

@@ -147,7 +147,14 @@
           this.clientId = clientid;
       },
       deleteClient: function(event){
-          alert('deleted');
+        let self = this;
+        axios.delete('/clients/' + this.clientId)
+             .then(response => {
+               self.clientList = response.data.clients;
+             })
+             .catch(error => {
+               console.log(error.response);
+             });
       }
     }
   }

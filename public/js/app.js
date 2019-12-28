@@ -2010,7 +2010,12 @@ __webpack_require__.r(__webpack_exports__);
       this.clientId = clientid;
     },
     deleteClient: function deleteClient(event) {
-      alert('deleted');
+      var self = this;
+      axios["delete"]('/clients/' + this.clientId).then(function (response) {
+        self.clientList = response.data.clients;
+      })["catch"](function (error) {
+        console.log(error.response);
+      });
     }
   }
 });

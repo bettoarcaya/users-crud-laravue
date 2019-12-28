@@ -128,6 +128,10 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $deleted_client = $this->clientRepository->deleteClient($id);
+        $clients = $this->clientRepository->getAll();
+        $data = compact('deleted_client', 'clients');
+
+        return response()->json($data, 200);
     }
 }
