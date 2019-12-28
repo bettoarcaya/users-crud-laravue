@@ -1956,8 +1956,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     submitClient: function submitClient(data) {
-      //alert('submit');
-      //console.log(data);
       axios.post('/clients/', data).then(function (response) {
         console.log(response);
       })["catch"](function (error) {

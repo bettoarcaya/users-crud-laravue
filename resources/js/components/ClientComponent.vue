@@ -94,15 +94,13 @@
     },
     methods:{
       submitClient: function(data){
-          //alert('submit');
-          //console.log(data);
-          axios.post('/clients/', data)
-              .then( response => {
-                console.log(response);
-              })
-              .catch( error => {
-                console.log(error.response);
-              });
+        axios.post('/clients/', data)
+            .then( response => {
+              console.log(response);
+            })
+            .catch( error => {
+              console.log(error.response);
+            });
       }
     }
   }
