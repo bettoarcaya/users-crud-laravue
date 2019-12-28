@@ -9,7 +9,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div id="">
-          <form method="post" @submit.prevent="$emit('edit', data.client)">
+          <form method="post" @submit.prevent="$emit('edit', {clientInfo: data.client, carShipsInfo: {delete: deleteCarDealerships, new: newCarDealerships}})">
             <div class="modal-header">
               <h5 class="modal-title vue-color">Editar cliente</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -62,7 +62,7 @@
                 </select>
                 <div class="container">
                   <div class="row">
-                    <div class="col-md-4 bg-color margin-t-5 margin-l-5" v-for="carship in data.carDealership" :key="carship.id">
+                    <div class="col-md-4 bg-color margin-t-5 margin-l-5" v-for="carship in data.carDealerships" :key="carship.id">
                       {{carship.name}} <span class="float-right" aria-hidden="true"><a href="javascript:void(0)" v-on:click="dellCarShip(carship.id)">&times;</a></span>
                     </div>
                   </div>
@@ -98,6 +98,8 @@
         return{
             carDealerships: [],
             carships: {},
+            newCarDealerships: [],
+            deleteCarDealerships: [],
             data: {
                 name: '',
                 lastname: '',
@@ -108,12 +110,15 @@
       },
       methods: {
         carDealershipList: function(){
-            this.data.carDealership.push(this.carships);
+            this.newCarDealerships.push(this.carships.id);
+            this.data.carDealerships.push(this.carships);
         },
         dellCarShip: function(carShipId){
-            for(let i = 0; i < this.data.carDealership.length; i++){
-                if(this.data.carDealership[i].id === carShipId){
-                    this.data.carDealership.splice(i, 1);
+            for(let i = 0; i < this.data.carDealerships.length; i++){
+                if(this.data.carDealerships[i].id === carShipId){
+                    this.deleteCarDealerships.push(this.data.carDealerships[i].car_dealer_id);
+                    this.data.carDealerships.splice(i, 1);
+
                 }
             }
         }

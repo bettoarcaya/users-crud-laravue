@@ -1994,6 +1994,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       clientList: [],
       clientObject: {},
+      dealershipObject: {},
       clientCarships: [],
       clientName: '',
       clientid: null
@@ -2020,6 +2021,12 @@ __webpack_require__.r(__webpack_exports__);
     },
     openEditModal: function openEditModal(client) {
       this.clientObject = client;
+      var self = this;
+      axios.get('/clients/car-dealerships/' + client.id).then(function (response) {
+        self.dealershipObject = response.data.ships;
+      })["catch"](function (error) {
+        console.log(error.response);
+      });
     },
     openDeleteModal: function openDeleteModal(clientname, clientid) {
       this.clientName = clientname;
@@ -2035,8 +2042,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     editClient: function editClient(event) {
       var self = this;
-      console.log(event);
-      axios.put('/clients/' + event.id, event).then(function (response) {
+      axios.put('/clients/' + event.clientInfo.id, event).then(function (response) {
         console.log(response);
       })["catch"](function (error) {
         console.log(error.response);
@@ -2367,6 +2373,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       carDealerships: [],
       carships: {},
+      newCarDealerships: [],
+      deleteCarDealerships: [],
       data: {
         name: '',
         lastname: '',
@@ -2377,12 +2385,14 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     carDealershipList: function carDealershipList() {
-      this.data.carDealership.push(this.carships);
+      this.newCarDealerships.push(this.carships.id);
+      this.data.carDealerships.push(this.carships);
     },
     dellCarShip: function dellCarShip(carShipId) {
-      for (var i = 0; i < this.data.carDealership.length; i++) {
-        if (this.data.carDealership[i].id === carShipId) {
-          this.data.carDealership.splice(i, 1);
+      for (var i = 0; i < this.data.carDealerships.length; i++) {
+        if (this.data.carDealerships[i].id === carShipId) {
+          this.deleteCarDealerships.push(this.data.carDealerships[i].car_dealer_id);
+          this.data.carDealerships.splice(i, 1);
         }
       }
     }
@@ -37976,7 +37986,12 @@ var render = function() {
       }),
       _vm._v(" "),
       _c("update-client-modal-component", {
-        attrs: { data: { client: _vm.clientObject } },
+        attrs: {
+          data: {
+            client: _vm.clientObject,
+            carDealerships: _vm.dealershipObject
+          }
+        },
         on: {
           edit: function($event) {
             return _vm.editClient($event)
@@ -38563,7 +38578,13 @@ var render = function() {
                   on: {
                     submit: function($event) {
                       $event.preventDefault()
-                      return _vm.$emit("edit", _vm.data.client)
+                      return _vm.$emit("edit", {
+                        clientInfo: _vm.data.client,
+                        carShipsInfo: {
+                          delete: _vm.deleteCarDealerships,
+                          new: _vm.newCarDealerships
+                        }
+                      })
                     }
                   }
                 },
@@ -38773,7 +38794,7 @@ var render = function() {
                         _c(
                           "div",
                           { staticClass: "row" },
-                          _vm._l(_vm.data.carDealership, function(carship) {
+                          _vm._l(_vm.data.carDealerships, function(carship) {
                             return _c(
                               "div",
                               {

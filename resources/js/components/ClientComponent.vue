@@ -96,7 +96,7 @@
     ></delete-client-modal-component>
 
     <update-client-modal-component
-      :data="{client: clientObject}"
+      :data="{client: clientObject, carDealerships: dealershipObject}"
       v-on:edit="editClient($event)"
     ></update-client-modal-component>
 
@@ -113,7 +113,10 @@
   export default {
       components: {
           UpdateClientModalComponent,
-          DeleteClientModalComponent, WatchClientModalComponent, AddClientModalComponent},
+          DeleteClientModalComponent,
+          WatchClientModalComponent,
+          AddClientModalComponent
+      },
       beforeMount(){
       let self = this;
       axios.get('/clients/')
@@ -128,9 +131,10 @@
       return {
         clientList: [],
         clientObject: {},
+        dealershipObject: {},
         clientCarships: [],
         clientName: '',
-        clientid: null
+        clientid: null,
 
       }
     },
@@ -153,10 +157,18 @@
              })
             .catch(error => {
                 console.log(error.response);
-            })
+            });
       },
       openEditModal: function(client){
         this.clientObject = client;
+        let self = this;
+        axios.get('/clients/car-dealerships/' + client.id)
+            .then(response => {
+                self.dealershipObject = response.data.ships;
+            })
+            .catch(error => {
+                console.log(error.response);
+            });
       },
       openDeleteModal: function(clientname, clientid){
           this.clientName = clientname;
@@ -174,14 +186,13 @@
       },
       editClient: function(event){
         let self = this;
-        console.log(event);
-        axios.put('/clients/' + event.id, event)
+        axios.put('/clients/' + event.clientInfo.id, event)
              .then(response => {
               console.log(response);
              })
             .catch(error => {
               console.log(error.response);
-            })
+            });
       }
     }
   }

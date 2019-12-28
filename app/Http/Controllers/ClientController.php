@@ -49,12 +49,12 @@ class ClientController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+  /**
+   * Store a newly created resource in storage.
+   *
+   * @param StoreClient $request
+   * @return \Illuminate\Http\Response
+   */
     public function store(StoreClient $request){
 
       $validation    = $request->validated();
@@ -69,8 +69,9 @@ class ClientController extends Controller
 
       $dealership_data = $request->carDealership;
       $client          = $this->clientRepository->saveClient($client_data);
-      $this->clientRepository->saveClientCarships($dealership_data, $client->id);
       $data            = compact('client');
+
+      $this->clientRepository->saveClientCarships($dealership_data, $client->id);
 
 
       return response()->json($data, 200);
@@ -85,14 +86,14 @@ class ClientController extends Controller
     public function show($id){
 
       $client = $this->clientRepository->getClient($id);
-      $data = compact('client');
+      $data   = compact('client');
 
       return response()->json($data, 200);
     }
 
     public function getCarShips($id){
       $ships = $this->clientRepository->getCarDealerships($id);
-      $data = compact('ships');
+      $data  = compact('ships');
 
       return response()->json($data, 200);
     }
@@ -115,16 +116,20 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreClient $request, $id)
+    public function update(Request $request, $id)
     {
-      $request->validated();
+
       $client_data   = [
-        'name'     => $request->name,
-        'email'    => $request->email,
-        'lastname' => $request->lastname,
+        'name'     => $request->clientInfo['name'],
+        'email'    => $request->clientInfo['email'],
+        'lastname' => $request->clientInfo['lastname'],
       ];
+
       $updated_client = $this->clientRepository->updateClient($client_data, $id);
-      $data = compact('updated_client');
+      $data           = compact('updated_client');
+
+      $this->clientRepository->deleteCarships($request->carShipsInfo['delete'], $id);
+      $this->clientRepository->addCarships($request->carShipsInfo['new'], $id);
 
       return response()->json($data, 200);
     }
@@ -138,8 +143,8 @@ class ClientController extends Controller
     public function destroy($id)
     {
         $deleted_client = $this->clientRepository->deleteClient($id);
-        $clients = $this->clientRepository->getAll();
-        $data = compact('deleted_client', 'clients');
+        $clients        = $this->clientRepository->getAll();
+        $data           = compact('deleted_client', 'clients');
 
         return response()->json($data, 200);
     }
