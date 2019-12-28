@@ -18,7 +18,7 @@
             </div>
             <div class="modal-body">
               <div class="form-group">
-                <label for="client_name">Nombre</label>
+                <label for="client_name">Nombre <span class="required-color">*</span></label>
                 <input
                   type="text"
                   id="client_name"
@@ -29,7 +29,7 @@
                   required>
               </div>
               <div class="form-group">
-                <label for="client_lastname">Apellido</label>
+                <label for="client_lastname">Apellido <span class="required-color">*</span></label>
                 <input
                   type="text"
                   id="client_lastname"
@@ -40,7 +40,7 @@
                   required>
               </div>
               <div class="form-group">
-                <label for="client_email">Email</label>
+                <label for="client_email">Email <span class="required-color">*</span></label>
                 <input
                   type="email"
                   id="client_email"

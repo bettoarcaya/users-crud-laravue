@@ -2023,7 +2023,7 @@ __webpack_require__.r(__webpack_exports__);
           carDealership: []
         };
       })["catch"](function (error) {
-        self.message('error', 'Ups, Porfavor intente nuevamente');
+        self.message('error', 'Ups, Por favor revise todos los campos requeridos');
       });
     },
     openModal: function openModal(client) {
@@ -2131,9 +2131,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
 //
 //
 //
@@ -41225,9 +41222,7 @@ var render = function() {
                   _vm._v(" "),
                   _c("div", { staticClass: "modal-body" }, [
                     _c("div", { staticClass: "form-group" }, [
-                      _c("label", { attrs: { for: "client_name" } }, [
-                        _vm._v("Nombre")
-                      ]),
+                      _vm._m(0),
                       _vm._v(" "),
                       _c("input", {
                         directives: [
@@ -41243,8 +41238,7 @@ var render = function() {
                           type: "text",
                           id: "client_name",
                           placeholder: "Nombre",
-                          name: "name",
-                          required: ""
+                          name: "name"
                         },
                         domProps: { value: _vm.value.val.name },
                         on: {
@@ -41259,9 +41253,7 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "form-group" }, [
-                      _c("label", { attrs: { for: "client_lastname" } }, [
-                        _vm._v("Apellido")
-                      ]),
+                      _vm._m(1),
                       _vm._v(" "),
                       _c("input", {
                         directives: [
@@ -41277,8 +41269,7 @@ var render = function() {
                           type: "text",
                           id: "client_lastname",
                           placeholder: "Apellido",
-                          name: "lastname",
-                          required: ""
+                          name: "lastname"
                         },
                         domProps: { value: _vm.value.val.lastname },
                         on: {
@@ -41297,9 +41288,7 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "form-group" }, [
-                      _c("label", { attrs: { for: "client_email" } }, [
-                        _vm._v("Email")
-                      ]),
+                      _vm._m(2),
                       _vm._v(" "),
                       _c("input", {
                         directives: [
@@ -41315,8 +41304,7 @@ var render = function() {
                           type: "email",
                           id: "client_email",
                           placeholder: "Email",
-                          name: "email",
-                          required: ""
+                          name: "email"
                         },
                         domProps: { value: _vm.value.val.email },
                         on: {
@@ -41445,7 +41433,7 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _vm._m(0)
+                  _vm._m(3)
                 ]
               )
             ])
@@ -41456,6 +41444,33 @@ var render = function() {
   )
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "client_name" } }, [
+      _vm._v("Nombre "),
+      _c("span", { staticClass: "required-color" }, [_vm._v("*")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "client_lastname" } }, [
+      _vm._v("Apellido "),
+      _c("span", { staticClass: "required-color" }, [_vm._v("*")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "client_email" } }, [
+      _vm._v("Email "),
+      _c("span", { staticClass: "required-color" }, [_vm._v("*")])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -41681,9 +41696,7 @@ var render = function() {
                   _vm._v(" "),
                   _c("div", { staticClass: "modal-body" }, [
                     _c("div", { staticClass: "form-group" }, [
-                      _c("label", { attrs: { for: "client_name" } }, [
-                        _vm._v("Nombre")
-                      ]),
+                      _vm._m(0),
                       _vm._v(" "),
                       _c("input", {
                         directives: [
@@ -41719,9 +41732,7 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "form-group" }, [
-                      _c("label", { attrs: { for: "client_lastname" } }, [
-                        _vm._v("Apellido")
-                      ]),
+                      _vm._m(1),
                       _vm._v(" "),
                       _c("input", {
                         directives: [
@@ -41757,9 +41768,7 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "form-group" }, [
-                      _c("label", { attrs: { for: "client_email" } }, [
-                        _vm._v("Email")
-                      ]),
+                      _vm._m(2),
                       _vm._v(" "),
                       _c("input", {
                         directives: [
@@ -41903,7 +41912,7 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _vm._m(0)
+                  _vm._m(3)
                 ]
               )
             ])
@@ -41914,6 +41923,33 @@ var render = function() {
   )
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "client_name" } }, [
+      _vm._v("Nombre "),
+      _c("span", { staticClass: "required-color" }, [_vm._v("*")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "client_lastname" } }, [
+      _vm._v("Apellido "),
+      _c("span", { staticClass: "required-color" }, [_vm._v("*")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "client_email" } }, [
+      _vm._v("Email "),
+      _c("span", { staticClass: "required-color" }, [_vm._v("*")])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

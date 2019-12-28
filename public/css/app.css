@@ -11407,3 +11407,7 @@ a.text-dark:focus {
   width: 30%;
 }
 
+.required-color {
+  color: red;
+}
+

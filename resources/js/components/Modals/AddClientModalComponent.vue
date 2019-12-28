@@ -19,37 +19,34 @@
             </div>
             <div class="modal-body">
               <div class="form-group">
-                <label for="client_name">Nombre</label>
+                <label for="client_name">Nombre <span class="required-color">*</span></label>
                 <input
                   type="text"
                   id="client_name"
                   class="form-control"
                   placeholder="Nombre"
                   name="name"
-                  v-model="value.val.name"
-                  required>
+                  v-model="value.val.name">
               </div>
               <div class="form-group">
-                <label for="client_lastname">Apellido</label>
+                <label for="client_lastname">Apellido <span class="required-color">*</span></label>
                 <input
                   type="text"
                   id="client_lastname"
                   class="form-control"
                   placeholder="Apellido"
                   name="lastname"
-                  v-model="value.val.lastname"
-                  required>
+                  v-model="value.val.lastname">
               </div>
               <div class="form-group">
-                <label for="client_email">Email</label>
+                <label for="client_email">Email <span class="required-color">*</span></label>
                 <input
                   type="email"
                   id="client_email"
                   class="form-control"
                   placeholder="Email"
                   name="email"
-                  v-model="value.val.email"
-                  required>
+                  v-model="value.val.email">
               </div>
               <div class="form-group">
                 <label for="client_car_dealership">Concesionarios</label>

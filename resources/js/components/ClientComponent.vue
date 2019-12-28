@@ -160,7 +160,7 @@
                 };
             })
             .catch( error => {
-                self.message('error', 'Ups, Porfavor intente nuevamente');
+                self.message('error', 'Ups, Por favor revise todos los campos requeridos');
             });
       },
       openModal: function(client){
