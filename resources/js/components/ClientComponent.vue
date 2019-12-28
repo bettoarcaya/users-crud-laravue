@@ -140,12 +140,14 @@
     },
     methods:{
       submitClient: function(data){
+        let self = this;
         axios.post('/clients/', data)
             .then( response => {
-              this.clientList.push(response.data.client);
+                this.clientList.push(response.data.client);
+                self.message('success', 'Usuario guardado satisfactoriamente');
             })
             .catch( error => {
-              console.log(error.response);
+                self.message('error', 'Ups, Porfavor intente nuevamente');
             });
       },
       openModal: function(client){
@@ -178,21 +180,40 @@
         let self = this;
         axios.delete('/clients/' + this.clientId)
              .then(response => {
-               self.clientList = response.data.clients;
+                 self.clientList = response.data.clients;
+                 self.message('success', 'Usuario eliminado satisfactoriamente');
              })
              .catch(error => {
-               console.log(error.response);
+                self.message('error', 'Ups, Porfavor intente nuevamente');
              });
       },
       editClient: function(event){
         let self = this;
         axios.put('/clients/' + event.clientInfo.id, event)
              .then(response => {
-              console.log(response);
+                 self.message('success', 'Usuario guardado satisfactoriamente')
              })
             .catch(error => {
-              console.log(error.response);
+                self.message('error', 'Ups, Porfavor intente nuevamente');
             });
+      },
+      message: function(status, msg){
+        const Swal = require('sweetalert2');
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+            onOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+        Toast.fire({
+            icon: status,
+            title: msg
+        });
       }
     }
   }
