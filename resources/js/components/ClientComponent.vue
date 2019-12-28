@@ -54,7 +54,12 @@
                       </a>
                     </td>
                     <td width="10px">
-                      <a href="javascript:void(0)" class="btn btn-sm">
+                      <a
+                        href="javascript:void(0)"
+                        class="btn btn-sm"
+                        data-toggle="modal"
+                        data-target="#delete-client-modal"
+                        v-on:click="openDeleteModal(client.name, client.id)">
                         <img
                           class="w-20-px"
                           :src="'/assets/icons/trash-alt-solid.svg'">
@@ -80,6 +85,10 @@
        }"
     ></watch-client-modal-component>
 
+    <delete-client-modal-component
+      :data="{clientname: clientName}"
+      v-on:delete="deleteClient($event)"
+    ></delete-client-modal-component>
 
 
   </div>
@@ -89,8 +98,9 @@
 <script>
   import AddClientModalComponent from "./Modals/AddClientModalComponent";
   import WatchClientModalComponent from "./Modals/WatchClientModalComponent";
+  import DeleteClientModalComponent from "./Modals/DeleteClientModalComponent";
   export default {
-      components: {WatchClientModalComponent, AddClientModalComponent},
+      components: {DeleteClientModalComponent, WatchClientModalComponent, AddClientModalComponent},
       beforeMount(){
       let self = this;
       axios.get('/clients/')
@@ -105,7 +115,9 @@
       return {
         clientList: [],
         clientObject: {},
-        clientCarships: []
+        clientCarships: [],
+        clientName: '',
+        clientid: null
 
       }
     },
@@ -129,6 +141,13 @@
             .catch(error => {
                 console.log(error.response);
             })
+      },
+      openDeleteModal: function(clientname, clientid){
+          this.clientName = clientname;
+          this.clientId = clientid;
+      },
+      deleteClient: function(event){
+          alert('deleted');
       }
     }
   }
