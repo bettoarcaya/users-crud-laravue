@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\ClientRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ClientController extends Controller
 {
@@ -53,9 +54,23 @@ class ClientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request){
+
+      $rand_password = substr(Hash::make(microtime()), 1, 8);
+      $client_data   = [
+        'name'     => $request->name,
+        'email'    => $request->email,
+        'lastname' => $request->lastname,
+        'password' => $rand_password,
+        'type_id'  => 2
+      ];
+
+      $dealership_data = $request->carDealership;
+      $client          = $this->clientRepository->saveClient($client_data);
+      $data            = compact('client');
+
+
+      return response()->json($data, 200);
     }
 
     /**

@@ -25,4 +25,11 @@ class ClientRepository
     return $response;
   }
 
+  public function saveClient($client){
+
+    $response = User::create($client);
+
+    return $response;
+  }
+
 }
