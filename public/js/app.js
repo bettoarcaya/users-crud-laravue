@@ -2002,7 +2002,6 @@ __webpack_require__.r(__webpack_exports__);
     axios.get('/clients/').then(function (response) {
       self.clientList = response.data.clients.data;
       self.pagInformation = response.data.clients;
-      console.log(self.pagInformation);
     })["catch"](function (error) {
       console.log(error.response);
     });

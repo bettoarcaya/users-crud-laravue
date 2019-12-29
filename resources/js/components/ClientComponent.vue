@@ -138,7 +138,6 @@
           .then( response => {
               self.clientList = response.data.clients.data;
               self.pagInformation = response.data.clients;
-              console.log(self.pagInformation);
           })
           .catch( error => {
              console.log(error.response);
