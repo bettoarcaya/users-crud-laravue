@@ -73,6 +73,20 @@
                   </tr>
                 </tbody>
               </table>
+              <div class="btn-group" v-if="pagInformation.total > 10">
+                <button
+                  class="btn vue-color-btn btn-sm"
+                  @click="prevPage"
+                  v-if="pagInformation.current_page !== 1">
+                  <img :src="'/assets/icons/previous.svg'">
+                </button>
+                <button
+                  class="btn vue-color-btn btn-sm"
+                  @click="nextPage"
+                  v-if="pagInformation.current_page !== pagInformation.last_page">
+                  <img :src="'/assets/icons/next.svg'">
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -122,7 +136,9 @@
       let self = this;
       axios.get('/clients/')
           .then( response => {
-              self.clientList = response.data.clients;
+              self.clientList = response.data.clients.data;
+              self.pagInformation = response.data.clients;
+              console.log(self.pagInformation);
           })
           .catch( error => {
              console.log(error.response);
@@ -136,6 +152,7 @@
         clientCarships: [],
         clientName: '',
         clientid: null,
+        pagInformation: {},
         values: {
             name: '',
             lastname: '',
@@ -193,7 +210,8 @@
         let self = this;
         axios.delete('/clients/' + this.clientId)
              .then(response => {
-                 self.clientList = response.data.clients;
+                 self.clientList = response.data.clients.data;
+                 self.pagInformation = response.data.clients;
                  self.message('success', 'Usuario eliminado satisfactoriamente');
              })
              .catch(error => {
@@ -208,6 +226,28 @@
              })
             .catch(error => {
                 self.message('error', 'Ups, Porfavor intente nuevamente');
+            });
+      },
+      nextPage: function(){
+        let self = this;
+        axios.get(this.pagInformation.next_page_url)
+            .then( response => {
+                self.clientList = response.data.clients.data;
+                self.pagInformation = response.data.clients;
+            })
+            .catch( error => {
+                console.log(error.response);
+            });
+      },
+      prevPage: function(){
+        let self = this;
+        axios.get(this.pagInformation.prev_page_url)
+            .then( response => {
+                self.clientList = response.data.clients.data;
+                self.pagInformation = response.data.clients;
+            })
+            .catch( error => {
+                console.log(error.response);
             });
       },
       message: function(status, msg){

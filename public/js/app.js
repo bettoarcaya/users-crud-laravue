@@ -1972,6 +1972,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -1986,7 +2000,9 @@ __webpack_require__.r(__webpack_exports__);
   beforeMount: function beforeMount() {
     var self = this;
     axios.get('/clients/').then(function (response) {
-      self.clientList = response.data.clients;
+      self.clientList = response.data.clients.data;
+      self.pagInformation = response.data.clients;
+      console.log(self.pagInformation);
     })["catch"](function (error) {
       console.log(error.response);
     });
@@ -1999,6 +2015,7 @@ __webpack_require__.r(__webpack_exports__);
       clientCarships: [],
       clientName: '',
       clientid: null,
+      pagInformation: {},
       values: {
         name: '',
         lastname: '',
@@ -2051,7 +2068,8 @@ __webpack_require__.r(__webpack_exports__);
     deleteClient: function deleteClient(event) {
       var self = this;
       axios["delete"]('/clients/' + this.clientId).then(function (response) {
-        self.clientList = response.data.clients;
+        self.clientList = response.data.clients.data;
+        self.pagInformation = response.data.clients;
         self.message('success', 'Usuario eliminado satisfactoriamente');
       })["catch"](function (error) {
         self.message('error', 'Ups, Porfavor intente nuevamente');
@@ -2063,6 +2081,24 @@ __webpack_require__.r(__webpack_exports__);
         self.message('success', 'Usuario guardado satisfactoriamente');
       })["catch"](function (error) {
         self.message('error', 'Ups, Porfavor intente nuevamente');
+      });
+    },
+    nextPage: function nextPage() {
+      var self = this;
+      axios.get(this.pagInformation.next_page_url).then(function (response) {
+        self.clientList = response.data.clients.data;
+        self.pagInformation = response.data.clients;
+      })["catch"](function (error) {
+        console.log(error.response);
+      });
+    },
+    prevPage: function prevPage() {
+      var self = this;
+      axios.get(this.pagInformation.prev_page_url).then(function (response) {
+        self.clientList = response.data.clients.data;
+        self.pagInformation = response.data.clients;
+      })["catch"](function (error) {
+        console.log(error.response);
       });
     },
     message: function message(status, msg) {
@@ -41029,7 +41065,42 @@ var render = function() {
                           0
                         )
                       ]
-                    )
+                    ),
+                    _vm._v(" "),
+                    _vm.pagInformation.total > 10
+                      ? _c("div", { staticClass: "btn-group" }, [
+                          _vm.pagInformation.current_page !== 1
+                            ? _c(
+                                "button",
+                                {
+                                  staticClass: "btn vue-color-btn btn-sm",
+                                  on: { click: _vm.prevPage }
+                                },
+                                [
+                                  _c("img", {
+                                    attrs: { src: "/assets/icons/previous.svg" }
+                                  })
+                                ]
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.pagInformation.current_page !==
+                          _vm.pagInformation.last_page
+                            ? _c(
+                                "button",
+                                {
+                                  staticClass: "btn vue-color-btn btn-sm",
+                                  on: { click: _vm.nextPage }
+                                },
+                                [
+                                  _c("img", {
+                                    attrs: { src: "/assets/icons/next.svg" }
+                                  })
+                                ]
+                              )
+                            : _vm._e()
+                        ])
+                      : _vm._e()
                   ])
             ])
           ])

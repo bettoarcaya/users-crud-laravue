@@ -22,7 +22,7 @@ class ClientRepository
    */
   public function getAll(){
     $response = User::where('type_id', 2)
-                    ->get();
+                    ->paginate(10);
 
     return $response;
   }
