@@ -221,7 +221,8 @@
         let self = this;
         axios.put('/clients/' + event.clientInfo.id, event)
              .then(response => {
-                 self.message('success', 'Usuario guardado satisfactoriamente')
+                 self.message('success', 'Usuario guardado satisfactoriamente');
+                 $('#edit-client-modal').modal('hide');
              })
             .catch(error => {
                 self.message('error', 'Ups, Porfavor intente nuevamente');

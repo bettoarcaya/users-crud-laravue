@@ -2078,6 +2078,7 @@ __webpack_require__.r(__webpack_exports__);
       var self = this;
       axios.put('/clients/' + event.clientInfo.id, event).then(function (response) {
         self.message('success', 'Usuario guardado satisfactoriamente');
+        $('#edit-client-modal').modal('hide');
       })["catch"](function (error) {
         self.message('error', 'Ups, Porfavor intente nuevamente');
       });
